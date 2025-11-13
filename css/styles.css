@@ -1,3 +1,8 @@
+/*
+=========================================
+GLOBAL STYLES AND VARIABLES
+=========================================
+*/
 * {
     margin: 0;
     padding: 0;
@@ -14,24 +19,39 @@
     --second-bg-color: #323946;
     --text-color: #fff;
     --main-color: #0ef;
+    
+    /* Variables for Skills/Certificates section (adjusting them to main theme) */
+    --primary-color: var(--main-color); /* #0ef */
+    --accent-color: #00bcd4; /* Slightly different shade for gradient/depth */
+    --background-light: var(--bg-color); /* Using main dark background */
+    --card-background: var(--second-bg-color); /* Using secondary dark background for cards */
+    --text-dark: var(--text-color); /* White text on dark cards */
+    --text-medium: #ccc; /* Lighter text on dark cards */
 }
 
 html {
-    font-size: 62.5%;
+    font-size: 62.5%; /* 1rem = 10px */
     overflow-x: hidden;
-
 }
 
 body {
     background: var(--bg-color);
     color: var(--text-color);
-    overflow-y: hidden;
+    /* ✅ FIX: REMOVE 'overflow-y: hidden;' TO ALLOW SCROLLING */
+    /* overflow-y: hidden; <- REMOVED */ 
 }
 
 section {
-    min-width: 100vh;
+    /* min-width: 100vh; <- CHANGED TO min-height */
+    min-height: 100vh; 
     padding: 10rem 9% 2rem;
 }
+
+/*
+=========================================
+HEADER & NAVIGATION
+=========================================
+*/
 
 .header {
     position: fixed;
@@ -44,10 +64,12 @@ section {
     justify-content: space-between;
     align-items: center;
     z-index: 100;
+    transition: all 0.3s ease; /* Added transition */
 }
 
 .header.sticky {
     border-bottom: .1rem solid rgba(0, 0, 0, .2);
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5); /* Added shadow for sticky */
 }
 
 .logo {
@@ -64,10 +86,7 @@ section {
     transition: .3s;
 }
 
-.navbar a:hover {
-    color: var(--main-color);
-}
-
+.navbar a:hover,
 .navbar a.active {
     color: var(--main-color);
 }
@@ -79,10 +98,20 @@ section {
     display: none;
 }
 
+/*
+=========================================
+HOME SECTION
+=========================================
+*/
 .home {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 2rem; /* Added gap */
+}
+
+.home-content {
+    max-width: 60rem; /* Constrain content width */
 }
 
 .home-content h3 {
@@ -90,7 +119,7 @@ section {
     font-weight: 700;
 }
 
-.home-content h3 :nth-of-type(2) {
+.home-content h3:nth-of-type(2) {
     margin-bottom: 2rem;
 }
 
@@ -124,7 +153,6 @@ span {
 .home-content p {
     font-size: 1.6rem;
 }
-
 
 .social-media a {
     display: inline-flex;
@@ -167,12 +195,18 @@ span {
     box-shadow: none;
 }
 
+/*
+=========================================
+ABOUT SECTION
+=========================================
+*/
 .about {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 3rem;
     background: var(--second-bg-color);
+    min-height: auto; /* Allow section height to adjust */
 }
 
 .about-img img {
@@ -182,7 +216,6 @@ span {
 .heading {
     text-align: center;
     font-size: 5rem;
-
 }
 
 .about-content h2 {
@@ -199,7 +232,14 @@ span {
     margin: 2rem 0 3rem;
 }
 
-
+/*
+=========================================
+SERVICES SECTION
+=========================================
+*/
+.services {
+    min-height: auto; /* Allow section height to adjust */
+}
 .services h2 {
     margin-bottom: 5rem;
 }
@@ -241,140 +281,58 @@ span {
     margin: 1rem 0 3rem;
 }
 
-/* ---------- Skills Section ---------- */
-/* .skills {
-  background: var(--second-bg-color);
-  padding: 5rem 9% 3rem;
-  text-align: center;
-}
-
-.skills .heading {
-  font-size: 3rem;
-  margin-bottom: 2.5rem;
-}
-
-.skills-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2rem;
-}
-
-.skill-box {
-  background: var(--bg-color);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease;
-}
-
-.skill-box:hover {
-  transform: translateY(-8px);
-}
-
-.skill-box h3 {
-  font-size: 1.4rem;
-  color: var(--main-color);
-  margin-bottom: 0.5rem;
-}
-
-.skill-bar {
-  background: rgba(255, 255, 255, 0.1);
-  height: 10px;
-  border-radius: 10px;
-  margin: 0.8rem 0;
-  overflow: hidden;
-}
-
-.skill-bar span {
-  display: block;
-  height: 100%;
-  background: linear-gradient(90deg, #0b84ff, #6ee7b7);
-  border-radius: 10px;
-}
-
-.skill-box p {
-  color: var(--text-color);
-  font-size: 0.95rem;
-  margin-top: 0.5rem;
-} */
-/* --- Skill Section Styles --- */
-
-/* Basic Section and Heading Styling (Adjust colors/fonts to match your main theme) */
-/* ================================================= */
-:root {
-    /* Color Palette */
-    --primary-color: #007bff; /* Vibrant Blue Accent */
-    --accent-color: #0056b3; /* Darker Blue for Depth/Text */
-    --background-light: #f8f8f8f6; /* Soft Section Background */
-    --card-background: #ffffff; /* Skill Box Background */
-    --text-dark: #333333;
-    --text-medium: #555555;
-    
-    /* Typography */
-    --font-heading: 'Poppins', sans-serif;
-    --font-body: 'Roboto', sans-serif;
-}
-
-/* --- ✅ Skills Section (Isolated Styling) --- */
+/*
+=========================================
+SKILLS SECTION
+=========================================
+*/
 .skills {
     padding: 6rem 8%;
     background: var(--background-light);
-    font-family: var(--font-body);
+    min-height: auto;
 }
 
-/* 🔒 Heading only inside Skills */
 .skills .heading {
     text-align: center;
     font-size: 3.5rem;
     margin-bottom: 3rem;
-    color: var(--text-dark); /* Black heading */
-    font-family: var(--font-heading);
+    color: var(--text-dark); 
 }
 
-/* 🔒 Only "Expertise" (span) text in blue for skills */
 .skills .heading span {
     color: var(--primary-color);
 }
 
-/* --- Skills Grid Layout --- */
 .skills-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    /* Adjusted minmax for better mobile flow (300px) */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 2rem;
 }
 
-/* --- Skill Boxes --- */
 .skill-box {
     background: var(--card-background);
     padding: 1.5rem;
     border-radius: 12px;
-    box-shadow:
-        0 4px 6px rgba(0, 0, 0, 0.05),
-        0 10px 20px rgba(0, 0, 0, 0.08);
-    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
-                box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
     border-left: 6px solid var(--primary-color);
-    will-change: transform;
 }
 
 .skill-box:hover {
-    transform: translateY(-8px) translateZ(0);
-    box-shadow:
-        0 12px 15px rgba(0, 0, 0, 0.1),
-        0 30px 40px rgba(0, 0, 0, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 15px rgba(0, 0, 0, 0.1), 0 30px 40px rgba(0, 0, 0, 0.15);
 }
 
-/* --- Text inside Skill Box --- */
 .skill-box h3 {
     font-size: 1.6rem;
-    color: var(--text-dark);
+    color: var(--primary-color);
     margin-bottom: 0.5rem;
     font-weight: 700;
 }
 
 .skill-box p {
-    font-size: 0.95rem;
+    font-size: 1.4rem; /* Increased font size for readability */
     color: var(--text-medium);
     line-height: 1.6;
     margin-top: 1rem;
@@ -385,10 +343,9 @@ span {
     color: var(--accent-color);
 }
 
-/* --- Skill Progress Bar --- */
 .skill-bar {
     height: 10px;
-    background: #fafbfc;
+    background: rgba(255, 255, 255, 0.1); /* Lighter track */
     border-radius: 5px;
     overflow: hidden;
     margin-top: 0.75rem;
@@ -400,41 +357,17 @@ span {
     background: linear-gradient(90deg, var(--primary-color) 0%, var(--accent-color) 100%);
     border-radius: 5px;
     transition: width 1.5s ease-out;
-    width: 0;
-    will-change: width;
 }
 
-/* --- Responsive --- */
-@media (max-width: 992px) {
-    .skills {
-        padding: 5rem 6%;
-    }
-    .skills .heading {
-        font-size: 3rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .skills-container {
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    }
-    .skills {
-        padding: 4rem 4%;
-    }
-}
-
-@media (max-width: 500px) {
-    .skills-container {
-        grid-template-columns: 1fr;
-    }
-    .skills .heading {
-        font-size: 2.5rem;
-    }
-}
-
+/*
+=========================================
+PORTFOLIO SECTION
+=========================================
+*/
 
 .portfolio {
     background: var(--second-bg-color);
+    min-height: auto;
 }
 
 .portfolio h2 {
@@ -443,7 +376,8 @@ span {
 
 .portfolio-container {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    /* Default to 3 columns, adjusted in media queries */
+    grid-template-columns: repeat(3, 1fr); 
     align-items: center;
     gap: 2.5rem;
 }
@@ -458,6 +392,7 @@ span {
 
 .portfolio-box img {
     width: 100%;
+    height: auto; /* Ensure height adjusts correctly */
     transition: .5s ease;
 }
 
@@ -509,18 +444,112 @@ span {
     font-size: 2rem;
     color: var(--second-bg-color);
 }
-/* 🎓 Certificate Section */
-/* =======================
+
+/*
+=========================================
+CERTIFICATE SECTION
+=========================================
+*/
+.certificate-section {
+    background: var(--bg-color); /* Used main background for contrast with cards */
+    color: var(--text-color);
+    padding: 6rem 8%;
+    text-align: center;
+    min-height: auto;
+}
+
+.certificate-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.certificate-card {
+    position: relative;
+    background: var(--second-bg-color); /* Dark card background */
+    border-radius: 12px;
+    width: 280px; /* Slightly wider for better content space */
+    padding: 2rem 1.5rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    border: 1px solid transparent;
+}
+
+.certificate-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at center, rgba(14, 239, 255, 0.2), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    transform: scale(0.7);
+    z-index: 0;
+}
+
+.certificate-card:hover::before {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.certificate-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(14, 239, 255, 0.3);
+    border-color: var(--main-color);
+}
+
+.certificate-card * {
+    position: relative;
+    z-index: 1;
+}
+
+.certificate-icon {
+    font-size: 3.5rem; /* Slightly larger icon */
+    color: var(--main-color);
+    margin-bottom: 1rem;
+}
+
+.certificate-card h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+}
+
+.certificate-card p {
+    font-size: 1.4rem;
+    color: var(--text-medium);
+}
+
+.certificate-card a {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 10px 20px;
+    background: var(--main-color);
+    color: var(--second-bg-color);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background 0.3s ease;
+    box-shadow: 0 0 1rem rgba(14, 239, 255, 0.2);
+}
+
+.certificate-card a:hover {
+    background: #00bcd4;
+    box-shadow: none;
+}
 
 
+/*
+=========================================
+CONTACT SECTION
+=========================================
+*/
 
-
-
-
-
-
-
-/* contact */
+.contact {
+    min-height: auto;
+}
 
 .contact h2 {
     margin-bottom: 3rem;
@@ -554,7 +583,7 @@ span {
     width: 49%;
 }
 
-.contact FORM textarea {
+.contact form textarea { /* Corrected FORM to form */
     resize: none;
 }
 
@@ -563,6 +592,11 @@ span {
     cursor: pointer;
 }
 
+/*
+=========================================
+FOOTER
+=========================================
+*/
 .footer {
     display: flex;
     justify-content: space-between;
@@ -597,14 +631,20 @@ span {
 
 
 
-/* breakpoints */
+/*
+=========================================
+BREAKPOINTS (Responsive Design)
+=========================================
+*/
 
+/* Laptop/Large Tablets (1200px) */
 @media (max-width: 1200px) {
     html {
         font-size: 55%;
     }
 }
 
+/* Tablets (991px) */
 @media (max-width: 991px) {
     .header {
         padding: 2rem 3%;
@@ -613,24 +653,23 @@ span {
     section {
         padding: 10rem 3% 2rem;
     }
+    
+    .home {
+        padding-top: 12rem; /* Give space for fixed header */
+        min-height: auto;
+    }
 
     .footer {
         padding: 2rem 3%;
     }
 
-    .services {
+    .services, .portfolio, .contact, .about, .skills {
         padding-bottom: 7rem;
-    }
-
-    .portfolio {
-        padding-bottom: 7rem;
-    }
-
-    .contact {
         min-height: auto;
     }
 }
 
+/* Mobile Devices (768px) */
 @media (max-width: 768px) {
     #menu-icon {
         display: block;
@@ -658,8 +697,16 @@ span {
         margin: 3rem 0;
     }
 
+    /* Home Section adjustments for mobile */
     .home {
-        flex-direction: column;
+        flex-direction: column-reverse; /* Put image on top */
+        text-align: center;
+        gap: 0;
+        padding-top: 12rem;
+    }
+    
+    .home-content {
+        margin-top: 3rem;
     }
 
     .home-content h3 {
@@ -671,57 +718,87 @@ span {
     }
 
     .home-img img {
-        width: 70vw;
+        width: 60vw; /* Smaller image size */
         margin-top: 4rem;
     }
-
+    
+    /* About Section adjustments for mobile */
     .about {
         flex-direction: column;
+        text-align: center;
     }
 
-    .about img {
-        width: 70vh;
+    .about-img img {
+        width: 70vw;
         margin-top: 4rem;
+        margin-bottom: 2rem;
+    }
+    
+    .about-content h2 {
+        text-align: center;
     }
 
-    .services h2 {
-        margin-bottom: 3rem;
-    }
-
+    /* Portfolio adjustments for mobile */
     .portfolio h2 {
         margin-bottom: 3rem;
     }
 
     .portfolio-container {
-        grid-template-columns: repeat(2, 1fr);
+        /* Changed to 2 columns for tablets, 1 for small mobile */
+        grid-template-columns: repeat(2, 1fr); 
+    }
+    
+    /* Skills adjustments for mobile */
+    .skills-container {
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
     }
 }
 
+/* Small Mobile Devices (617px) */
 @media (max-width: 617px) {
     .portfolio-container {
-        grid-template-columns: 1fr;
+        /* Single column for small mobile screens */
+        grid-template-columns: 1fr; 
+    }
+    
+    .services-container .services-box {
+        flex-basis: 100%; /* Services boxes take full width */
     }
 }
 
+/* Extra Small Mobile Devices (450px) */
 @media (max-width: 450px) {
     html {
         font-size: 50%;
+    }
+    
+    .heading {
+        font-size: 4rem; /* Smaller heading */
+    }
+    
+    .home-img img {
+        width: 80vw; /* Larger image on very small screens */
+    }
+    
+    .about-img img{
+        width: 80vw; /* Larger image on very small screens */
     }
 
     .contact form .input-box input {
         width: 100%;
     }
+    
+    .skills-container {
+        grid-template-columns: 1fr; /* Single column for very small screens */
+    }
+    
+    .certificate-card {
+        width: 100%; /* Certificates take full width */
+    }
 }
 
+/* Very Small Mobile Devices (365px) */
 @media (max-width: 365px) {
-    .home-img img {
-        width: 90vh;
-    }
-
-    .about-img img{
-        width: 90vh;
-    }
-
     .footer {
         flex-direction: column-reverse;
     }
@@ -730,97 +807,4 @@ span {
         text-align: center;
         margin-top: 2rem;
     }
-
-}
-
-/* ---------- CERTIFICATE SECTION ---------- */
-/* ---------- CERTIFICATE SECTION ---------- */
-.certificate-section {
-  background: var(--second-bg-color); /* same dark bg as contact section */
-  color: var(--text-color);
-  padding: 6rem 8%;
-  text-align: center;
-}
-
-.certificate-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 2rem;
-  margin-top: 3rem;
-}
-
-/* ✨ Certificate Card (with blue inner light animation) */
-.certificate-card {
-  position: relative;
-  background: #ffffff;
-  border-radius: 12px;
-  width: 260px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-  overflow: hidden;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-}
-
-.certificate-card::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at center, rgba(0, 123, 255, 0.25), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-  transform: scale(0.7);
-  z-index: 0;
-}
-
-.certificate-card:hover::before {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.certificate-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 10px 25px rgba(0, 123, 255, 0.3);
-}
-
-/* Inside content above glow */
-.certificate-card * {
-  position: relative;
-  z-index: 1;
-}
-
-/* 🎓 Icon */
-.certificate-icon {
-  font-size: 3rem;
-  color: #007bff;
-  margin-bottom: 1rem;
-}
-
-/* Text */
-.certificate-card h3 {
-  font-size: 1.2rem;
-  color: #333;
-  margin-bottom: 0.5rem;
-}
-
-.certificate-card p {
-  font-size: 0.9rem;
-  color: #555;
-}
-
-/* Button */
-.certificate-card a {
-  display: inline-block;
-  margin-top: 1rem;
-  padding: 8px 16px;
-  background: #007bff;
-  color: #fff;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 500;
-  transition: background 0.3s ease;
-}
-
-.certificate-card a:hover {
-  background: #0056b3;
 }
