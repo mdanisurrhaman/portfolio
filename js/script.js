@@ -309,7 +309,7 @@ ScrollReveal().reveal(".home-content p, .about-content", { origin: "right" });
 // ⌨️ Typed JS Effect
 // ----------------------------
 const typed = new Typed(".multiple-text", {
-    strings: ["Full Stack Developer With Python"],
+    strings: ["Python Full Stack Developer"],
     typeSpeed: 100,
     backSpeed: 100,
     backDelay: 1000,
